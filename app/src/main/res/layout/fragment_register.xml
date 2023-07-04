@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registeration Form "
+        android:background="#f0f"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+
+        />
+
+    <EditText
+        android:id="@+id/edt_userfname"
+        android:layout_width="393dp"
+        android:layout_height="92dp"
+        android:layout_margin="10dp"
+        android:hint="First Name" />
+
+    <EditText
+        android:id="@+id/edt_userlname"
+        android:layout_width="393dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:hint="Last Name " />
+
+    <EditText
+        android:id="@+id/edt_userid"
+        android:layout_width="391dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:hint="ID Number" />
+
+    <EditText
+        android:id="@+id/edt_major"
+        android:layout_width="391dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:hint="Major " />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:id="@+id/btn_add"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#f0f"
+        />
+
+
+
+</LinearLayout>

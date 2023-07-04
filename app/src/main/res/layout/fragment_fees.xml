@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fees Form "
+        android:background="#f0f"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+
+        />
+
+    <EditText
+        android:id="@+id/edt_userid"
+        android:layout_width="393dp"
+        android:layout_height="92dp"
+        android:layout_margin="10dp"
+        android:hint="ID Number" />
+
+    <EditText
+        android:id="@+id/edt_tfees"
+        android:layout_width="393dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:hint="Total Fees " />
+
+    <EditText
+        android:id="@+id/edt_pfees"
+        android:layout_width="391dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:hint="Paid Fees " />
+
+    <EditText
+        android:id="@+id/edt_bfees"
+        android:layout_width="391dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:hint="Fees balance " />
+    <EditText
+        android:id="@+id/edt_cdate"
+        android:layout_width="391dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:hint="Clearance date " />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register Fees"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:id="@+id/btn_add"
+        android:layout_gravity="center"
+        android:background="#f0f"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+</LinearLayout>
