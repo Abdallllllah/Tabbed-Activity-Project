@@ -41,6 +41,48 @@ public class MySQliteHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public Boolean updateuserdataf(String fname, String lname, String idnum, String major)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(C_NAME, fname);
+        contentValues.put("lname", lname);
+        contentValues.put("idnum", idnum);
+        contentValues.put("major", major);
+        Cursor cursor = DB.rawQuery("Select * from Register where " + C_NAME + " = ?", new String[]{fname});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("Register", contentValues, C_NAME + "=?", new String[]{fname});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+    public Cursor getdatar ()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Register", null);
+        return cursor;
+    }
+    public Boolean deletedatar (String name)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Register where " + C_NAME + " = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("Register", C_NAME + "=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public Boolean insertfees(String idnum, String tfees, String pfees, String bfees, String c_date)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -57,6 +99,50 @@ public class MySQliteHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public Boolean updateuserdata(String idnum, String tfees, String pfees, String bfees, String c_date)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("idnum", idnum);
+        contentValues.put("Total_Fees", tfees);
+        contentValues.put("Fees_Paid", pfees);
+        contentValues.put("Fees_Balance", bfees);
+        contentValues.put("Clearance_date", c_date);
+        Cursor cursor = DB.rawQuery("Select * from Fees where idnum = ?", new String[]{idnum});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("Fees", contentValues,  "idnum =?", new String[]{idnum});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+    public Boolean deletedata (String name)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Fees where idnum = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("Fees",  "idnum =?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+    public Cursor getdataf()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Fees", null);
+        return cursor;
+    }
+
 
 
 

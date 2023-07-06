@@ -1,5 +1,6 @@
 package com.example.assignment2.fragments;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.assignment2.MainActivity;
@@ -25,7 +27,7 @@ public class RegisterFragment extends Fragment {
     // Context context=this;
     MySQliteHelper mysqlDbHelper;
     SQLiteDatabase sqLiteDatabase;
-    Button btn_add;
+    Button btn_add,btn_delete,btn_update, btn_view;
 
     @Nullable
     @Override
@@ -42,10 +44,60 @@ public class RegisterFragment extends Fragment {
         edt_userid  = (EditText)view.findViewById(R.id.edt_userid);
         edt_major  = (EditText)view.findViewById(R.id.edt_major);
         btn_add = (Button)view.findViewById(R.id.btn_add);
+        btn_delete = (Button)view.findViewById(R.id.btn_delete);
+        btn_update = (Button)view.findViewById(R.id.btn_update);
+        btn_view = (Button)view.findViewById(R.id.btn_view);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 register();
+            }
+        });
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+
+            }
+        });
+        btn_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mysqlDbHelper = new MySQliteHelper(getContext());
+                update();
+                Cursor res = mysqlDbHelper.getdatar();
+                if(res.getCount()==0){
+                    Toast.makeText(getContext(), "No Entry Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(res.moveToNext()){
+                    buffer.append("First Name :"+res.getString(0)+"\n");
+                    buffer.append("Last name :"+res.getString(1)+"\n");
+                    buffer.append("Use id :"+res.getString(2)+"\n");
+                    buffer.append("Major :"+res.getString(3)+"\n\n");
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setCancelable(true);
+                builder.setTitle("Register Entries");
+                builder.setMessage(buffer.toString());
+                builder.show();
+
+            }
+        });
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mysqlDbHelper = new MySQliteHelper(getContext());
+                String nameTXT = edt_userfname.getText().toString();
+                Boolean checkudeletedata = mysqlDbHelper.deletedatar(nameTXT);
+                if(checkudeletedata==true)
+                    Toast.makeText(getContext(), "Entry Deleted", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getContext(), "Entry Not Deleted", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -66,4 +118,22 @@ public class RegisterFragment extends Fragment {
 
         mysqlDbHelper.close();
     }
+    public void update()
+    {
+        String fname=edt_userfname.getText().toString();
+        String lname=edt_userlname.getText().toString();
+        String userid=edt_userid.getText().toString();
+        String major=edt_major.getText().toString();
+
+        mysqlDbHelper = new MySQliteHelper(getContext());
+
+        Boolean checkinsertdata = mysqlDbHelper.updateuserdataf(fname, lname, userid, major);
+        if(checkinsertdata==true)
+            Toast.makeText(getContext(), "New Entry updated", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getContext(), "New Entry Not updated", Toast.LENGTH_SHORT).show();
+
+        mysqlDbHelper.close();
+    }
+
 }
