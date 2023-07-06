@@ -19,41 +19,70 @@
         android:id="@+id/edt_userfname"
         android:layout_width="393dp"
         android:layout_height="92dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="First Name" />
 
     <EditText
         android:id="@+id/edt_userlname"
         android:layout_width="393dp"
         android:layout_height="70dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="Last Name " />
 
     <EditText
         android:id="@+id/edt_userid"
         android:layout_width="391dp"
         android:layout_height="85dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="ID Number" />
 
     <EditText
         android:id="@+id/edt_major"
         android:layout_width="391dp"
         android:layout_height="85dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="Major " />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="18sp"
-        android:gravity="center"
         android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="#f0f"
-        />
+        android:gravity="center"
+        android:text="Register"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#f0f"
+        android:gravity="center"
+        android:text="Delete"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#f0f"
+        android:gravity="center"
+        android:text="Update"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#f0f"
+        android:gravity="center"
+        android:text="View"
+        android:textSize="18sp" />
 
 
 
